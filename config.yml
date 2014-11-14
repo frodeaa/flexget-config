@@ -1,0 +1,31 @@
+templates:
+  tv:
+    transmission:
+      host: localhost
+      port: 9091
+    exists_series: /media/i1000/downloads
+    series:
+      - True Detective
+email:
+  from: XXXX@gmail.com
+  to: XXXX@gmail.com
+  smtp_host: smtp.gmail.com
+  smtp_port: 587
+  smtp_username: 'XXXX'
+  smtp_password: 'XXXXX'
+  smtp_tls: yes
+  template: accepted
+
+tasks:
+  rb-chat:
+    rss: http://rss.bt-chat.com/?group=3
+    template: tv
+  torrentz:
+    rss: http://torrentz.eu/feed
+    template: tv
+  extratorrent:
+    rss: http://extratorrent.cc/rss.xml?cid=8
+    template: tv
+  feedburner:
+    rss: http://feeds.feedburner.com/eztv-rss-atom-feeds?format=xml
+    template: tv
