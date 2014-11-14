@@ -18,15 +18,15 @@ email:
   template: accepted
 
 tasks:
-  rb-chat:
+  tv-rb-chat:
     rss: http://rss.bt-chat.com/?group=3
     template: tv
-  torrentz:
+  tv-torrentz:
     rss: http://torrentz.eu/feed
     template: tv
-  extratorrent:
+  tv-extratorrent:
     rss: http://extratorrent.cc/rss.xml?cid=8
     template: tv
-  feedburner:
+  tv-feedburner:
     rss: http://feeds.feedburner.com/eztv-rss-atom-feeds?format=xml
     template: tv

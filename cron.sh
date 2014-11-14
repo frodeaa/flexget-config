@@ -18,7 +18,7 @@ fi
 D=$(date)
 echo "$D - running flexget cron now..." >> $LOG
 echo " "
-/usr/local/bin/flexget --cron
+/usr/local/bin/flexget execute --tasks tv-*
 
 exit 0
 
