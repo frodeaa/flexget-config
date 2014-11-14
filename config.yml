@@ -1,3 +1,4 @@
+secrets: secretfile.yml
 templates:
   tv:
     transmission:
@@ -13,8 +14,8 @@ email:
   to: XXXX@gmail.com
   smtp_host: smtp.gmail.com
   smtp_port: 587
-  smtp_username: 'XXXX'
-  smtp_password: 'XXXXX'
+  smtp_username: '{{ secrets.email.smtp_username }}'
+  smtp_password: '{{ secrets.email.smtp_password }}'
   smtp_tls: yes
   template: accepted
 
