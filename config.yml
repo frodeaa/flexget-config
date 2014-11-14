@@ -3,6 +3,7 @@ templates:
     transmission:
       host: localhost
       port: 9091
+      path: /media/i1000/downloads
     exists_series: /media/i1000/downloads
     series:
       - True Detective
