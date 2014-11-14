@@ -8,6 +8,24 @@ templates:
     exists_series: /media/i1000/downloads
     series:
       - True Detective
+      - The Big Bang Theory:
+          begin: S08E08
+      - Bones:
+          begin: S10E07
+      - Arrows:
+          begin: S03E06
+      - White Collar:
+          begin: S06E02
+      - Elementary:
+          begin: S03E03
+      - Conan
+      - The Daily Show
+      - Constantine
+      - Castle (2009)
+      - The Flash 2014
+      - Selfie
+      - Stalker
+      - Jimmy Fallon
     quality: hdtv
 email:
   from: '{{ secrets.email.from }}'
