@@ -7,6 +7,7 @@ templates:
     exists_series: /media/i1000/downloads
     series:
       - True Detective
+    quality: hdtv
 email:
   from: XXXX@gmail.com
   to: XXXX@gmail.com
