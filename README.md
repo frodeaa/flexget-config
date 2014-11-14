@@ -8,6 +8,7 @@ configuration for FlexGet
     pip install flexget
     pip install transmissionrpc
     git clone git@github.com:frodeaa/flexget-config.git ~/.flexget
+    git remote set-url --push origin no_push #avoid sharing secrets
 
 ## configure
 
