@@ -16,7 +16,10 @@ See http://flexget.com/wiki for more information
 
 ## schedule
 
-- add 0/30 * * * * /usr/local/bin/flexget --cron at crontab
+add cron.sh to crontab
+
+    crontab -e
+    0/30 * * * * /home/pi/.flexget/cron.sh
 
 
 
