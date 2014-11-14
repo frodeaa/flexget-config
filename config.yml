@@ -1,4 +1,4 @@
-secrets: secretfile.yml
+secrets: secrets.yml
 templates:
   tv:
     transmission:

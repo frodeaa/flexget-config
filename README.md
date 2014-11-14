@@ -11,7 +11,7 @@ configuration for FlexGet
 
 ## configure
 
-    cp secretfile_template.yml secretfile.yml # edit the secrets
+    cp secretfile_template.yml secrets.yml # edit the secrets
 
 See http://flexget.com/wiki for more information
 

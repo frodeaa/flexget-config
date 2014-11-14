@@ -1,3 +1,4 @@
 *.log
 *.sqlite
 secretfile.yml
+secrets.yml
