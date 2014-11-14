@@ -5,9 +5,9 @@ configuration for FlexGet
 
 ## install
 
-   pip install flexget
-   pip install transmissionrpc
-   git clone git@github.com:frodeaa/flexget-config.git ~/.flexget
+    pip install flexget
+    pip install transmissionrpc
+    git clone git@github.com:frodeaa/flexget-config.git ~/.flexget
 
 ## configure
 
