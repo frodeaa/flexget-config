@@ -10,8 +10,8 @@ templates:
       - True Detective
     quality: hdtv
 email:
-  from: XXXX@gmail.com
-  to: XXXX@gmail.com
+  from: '{{ secrets.email.from }}'
+  to: '{{ secrets.email.to }}'
   smtp_host: smtp.gmail.com
   smtp_port: 587
   smtp_username: '{{ secrets.email.smtp_username }}'
