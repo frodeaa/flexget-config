@@ -3,3 +3,5 @@
 secretfile.yml
 secrets.yml
 received
+
+*.log.*
