@@ -7,31 +7,27 @@ templates:
       path: /media/i1000/downloads
     exists_series: /media/i1000/downloads
     series:
-      - True Detective
-      - The Big Bang Theory:
-          begin: S08E08
-      - Bones:
-          begin: S10E07
-      - Arrow:
-          begin: S03E06
-      - White Collar:
-          begin: S06E02
-      - Elementary:
-          begin: S03E03
-#      - Conan
-      - The Daily Show
-      - Constantine
+      - Arrow
+      - Banshee
+      - Bones
+      - Brooklyn Nine-Nine
       - Castle (2009)
-      - The Flash 2014
+      - Constantine
+      - Elementary
+      - Forever
+      - Grimm
+      - Jimmy Fallon
+      - Marvels Agent Carter
+      - Person of Interest
       - Selfie
       - Stalker
-      - Jimmy Fallon
-      - The Newsroom
-      - Person of Interest
-      - Forever
       - State of Affairs
-      - Grimm:
-          begin: S04E09
+      - The Big Bang Theory
+      - The Daily Show
+      - The Flash 2014
+      - The Newsroom
+      - True Detective
+      - White Collar
     quality: hdtv
 email:
   from: '{{ secrets.email.from }}'
