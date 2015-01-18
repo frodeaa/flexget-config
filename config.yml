@@ -7,6 +7,7 @@ templates:
       path: /media/i1000/downloads
     exists_series: /media/i1000/downloads
     series:
+      - 12 Monkeys
       - Arrow
       - Banshee
       - Bones
