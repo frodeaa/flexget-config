@@ -29,13 +29,13 @@ DOWNLOADS=$(grep -Eo "path:..(.*)" config.yml |cut -d: -f2 | tr -d ' ')
 
 D=$(date)
 C=$(find $DOWNLOADS -maxdepth 1 -type f -mtime +7 -print|wc --lines)
-echo "$D - remove old download files, found $C" >> $LOG
-find $DOWNLOADS -maxdepth 1 -type f -mtime +7 -print -exec rm {} \;
+echo "$D - remove old download files, found $C" >> $LOG ;
+find "$DOWNLOADS" -maxdepth 1 -type f -mtime +7 -print -exec rm {} \;
 
 D=$(date)
 C=$(find $DOWNLOADS -maxdepth 1 -type d -mtime +7 -print|wc --lines)
-echo "$D - remove old downloads directories, found $C" >> $LOG
-find $DOWNLOADS -maxdepth 1 -type d -mtime +7 -print -exec rm -rf {} \;
+echo "$D - remove old downloads directories, found $C" >> $LOG ;
+find "$DOWNLOADS" -maxdepth 1 -type d -mtime +7 -print -exec rm -rf {} \;
 
 exit 0
 
