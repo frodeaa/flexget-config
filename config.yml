@@ -1,43 +1,14 @@
 secrets: secrets.yml
 templates:
-  tv:
+  torrent_server:
     transmission:
       host: localhost
       port: 9091
       path: /media/i1000/downloads
-    exists_series: /media/i1000/downloads
-    series:
-      - 12 Monkeys
-      - Allegiance
-      - Arrow
-      - Backstrom
-      - Banshee
-      - Better Call Saul
-      - Bitten
-      - Bones
-      - Brooklyn Nine-Nine
-      - Castle (2009)
-      - Constantine
-      - Elementary
-      - Forever
-      - Grimm
-      - Jimmy Fallon
-      - Marvels Agent Carter
-      - Person of Interest
-      - Selfie
-      - Stalker
-      - State of Affairs
-      - The Big Bang Theory
-      - The Blacklist
-      - The Daily Show
-      - The Flash 2014
-      - The Last Man On Earth
-      - The Man In The High Castle
-      - The Newsroom
-      - True Detective
-      - White Collar
-      - iZombie
-    quality: hdtv
+  tv:
+    template: [ torrent_server ]
+    include: [ series.yml ]
+
 email:
   from: '{{ secrets.email.from }}'
   to: '{{ secrets.email.to }}'
