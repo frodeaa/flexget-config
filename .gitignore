@@ -5,3 +5,4 @@ secrets.yml
 received
 
 *.log.*
+*.swp
