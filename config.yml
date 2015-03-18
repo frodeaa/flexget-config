@@ -4,7 +4,7 @@ templates:
     transmission:
       host: localhost
       port: 9091
-      path: /media/i1000/downloads
+      path: '{{ secrets.transmission.path }}'
   tv:
     template: [ torrent_server ]
     include: [ series.yml ]
