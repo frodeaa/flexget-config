@@ -1,6 +1,10 @@
 
 FILE="${HOME}/.flexget/.config-lock"
-LOG="${HOME}/.flexget/cron.log"
+LOG_PATH="${HOME}/.flexget/logs"
+LOG="${LOG_PATH}/cron.log"
+FLEX_LOG="${LOG_PATH}/flexget.log"
+
+mkdir -p $LOG_PATH
 
 F=$(pidof -s -x flexget)
 
@@ -14,28 +18,23 @@ if [ -f $FILE ]; then
   rm -f $FILE
 fi
 
-D=$(date)
-echo "$D - running flexget cron now..." >> $LOG
+echo "$(date) - running flexget cron now..." >> $LOG
 echo " "
-/usr/local/bin/flexget execute --tasks tv-*
 
-D=$(date)
+/usr/local/bin/flexget --logfile $FLEX_LOG execute --tasks tv-*
+
 C=$(transmission-remote --list | grep 100% | grep Done | awk '{print $1}'|wc --lines)
-echo "$D - cleanup finished downloads, found $C" >> $LOG
+echo "$(date) - cleanup finished downloads, found $C" >> $LOG
 transmission-remote --list | grep 100% | grep Done | awk '{print $1}' | xargs --max-args 1 --replace=% transmission-remote --torrent '%' --remove
 
 # PATH where downloads are saved
-DOWNLOADS=$(grep -Eo "path:..(.*)" config.yml |cut -d: -f2 | tr -d ' ')
+DOWNLOADS=$(grep -Eo "path:..(.*)" secrets.yml |cut -d: -f2 | tr -d ' ')
 
-D=$(date)
-C=$(find $DOWNLOADS -maxdepth 1 -type f -mtime +7 -print|wc --lines)
-echo "$D - remove old download files, found $C" >> $LOG ;
-find "$DOWNLOADS" -maxdepth 1 -type f -mtime +7 -print -exec rm {} \;
+echo "$(date) - remove old download files, found $(find $DOWNLOADS -maxdepth 1 -type f -mtime +7 -print|wc --lines)" >> $LOG ;
+find "$DOWNLOADS" -maxdepth 1 -type f -mtime +1 -print0 | xargs -0 -r rm;
 
-D=$(date)
-C=$(find $DOWNLOADS -maxdepth 1 -type d -mtime +7 -print|wc --lines)
-echo "$D - remove old downloads directories, found $C" >> $LOG ;
-find "$DOWNLOADS" -maxdepth 1 -type d -mtime +7 -print -exec rm -rf {} \;
+echo "$(date) - remove old downloads directories, found $(find $DOWNLOADS -maxdepth 1 -type d -mtime +7 -print|wc --lines)" >> $LOG ;
+find "$DOWNLOADS" -maxdepth 1 -type d -mtime +7 -print0 | xargs -0 -r rm -rf;
 
 exit 0
 
