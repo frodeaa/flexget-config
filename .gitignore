@@ -6,3 +6,4 @@ received
 
 *.log.*
 *.swp
+.config-lock

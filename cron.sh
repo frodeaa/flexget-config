@@ -10,11 +10,11 @@ F=$(pidof -s -x flexget)
 
 if [ $F ]; then
   kill $F
-  echo "flexget was still running... so killed it..." >> $LOG
+  echo "$(date) - flexget was still running... so killed it..." >> $LOG
 fi
 
 if [ -f $FILE ]; then
-  echo "lock file was there. so deleting lock file..." >> $LOG
+  echo "$(date) - lock file was there. so deleting lock file..." >> $LOG
   rm -f $FILE
 fi
 
