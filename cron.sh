@@ -21,7 +21,7 @@ fi
 echo "$(date) - running flexget cron now..." >> $LOG
 echo " "
 
-/usr/local/bin/flexget --logfile $FLEX_LOG execute --tasks tv-*
+/usr/local/bin/flexget --logfile $FLEX_LOG execute --tasks tv-* > /dev/null 2>&1
 
 C=$(transmission-remote --list | grep 100% | grep Done | awk '{print $1}'|wc --lines)
 echo "$(date) - cleanup finished downloads, found $C" >> $LOG
