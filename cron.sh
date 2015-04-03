@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 FILE="${HOME}/.flexget/.config-lock"
 LOG_PATH="${HOME}/.flexget/logs"
@@ -28,13 +29,14 @@ echo "$(date) - cleanup finished downloads, found $C" >> $LOG
 transmission-remote --list | grep 100% | grep Done | awk '{print $1}' | xargs --max-args 1 --replace=% transmission-remote --torrent '%' --remove
 
 # PATH where downloads are saved
-DOWNLOADS=$(grep -Eo "path:..(.*)" secrets.yml |cut -d: -f2 | tr -d ' ')
+DOWNLOADS=$(grep -Eo "path:..(.*)" ${HOME}/.flexget/secrets.yml | cut -d: -f2 | tr -d ' ')
 
+echo "$(date) Check old downloads in ${DOWNLOADS}" >> $LOG ;
 echo "$(date) - remove old download files, found $(find $DOWNLOADS -maxdepth 1 -type f -mtime +7 -print|wc --lines)" >> $LOG ;
-find "$DOWNLOADS" -maxdepth 1 -type f -mtime +1 -print0 | xargs -0 -r rm;
+find "$DOWNLOADS" -maxdepth 1 -type f -mtime +7 -exec rm {} \;
 
 echo "$(date) - remove old downloads directories, found $(find $DOWNLOADS -maxdepth 1 -type d -mtime +7 -print|wc --lines)" >> $LOG ;
-find "$DOWNLOADS" -maxdepth 1 -type d -mtime +7 -print0 | xargs -0 -r rm -rf;
+find "$DOWNLOADS" -maxdepth 1 -type d -mtime +7 -exec rm -rf {} \;
 
 exit 0
 
