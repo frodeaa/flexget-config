@@ -11,7 +11,7 @@ function log_msg() {
     echo "$(date) - $@" >> "${LOG_PATH}/cron.log"
 }
 
-F=$(pidof flexget | head -n 1)
+F=$(pidof -s -x flexget)
 
 if [ $F ]; then
   kill $F
@@ -38,8 +38,7 @@ downloads_done | xargs --max-args 1 --replace=% transmission-remote --torrent '%
 DOWNLOADS=$(grep -Eo "path:..(.*)" ${ROOT}/secrets.yml | cut -d: -f2 | tr -d ' ')
 
 function count_old() {
-    local ft="$1"
-    find $DOWNLOADS -maxdepth 1 -type $ft -mtime +7 -print|wc -l)
+    find $DOWNLOADS -maxdepth 1 -type $1 -mtime +7 -print | wc -l)
 }
 
 log_msg "Check old downloads in ${DOWNLOADS}"
