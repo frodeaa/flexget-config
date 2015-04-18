@@ -27,11 +27,12 @@ log_msg "running flexget cron now..."
 
 /usr/local/bin/flexget --logfile $FLEX_LOG execute --tasks tv-* > /dev/null 2>&1
 
-C=$(transmission-remote --list | grep 100% | grep Done | awk '{print $1}'|wc -l)
-log_msg "cleanup finished downloads, found $C"
+function downloads_done() {
+    transmission-remote --list | grep 100% | grep Done | awk '{print $1}'
+}
 
-transmission-remote --list | grep 100% | grep Done | awk '{print $1}'\
-    | xargs --max-args 1 --replace=% transmission-remote --torrent '%' --remove
+log_msg "cleanup finished downloads, found $(downloads_done | wc -l)"
+downloads_done | xargs --max-args 1 --replace=% transmission-remote --torrent '%' --remove
 
 # PATH where downloads are saved
 DOWNLOADS=$(grep -Eo "path:..(.*)" ${ROOT}/secrets.yml | cut -d: -f2 | tr -d ' ')
